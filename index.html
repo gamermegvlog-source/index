@@ -35,7 +35,7 @@
       color: var(--text);
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
-      -webkit-font-variant-ligatures: common-ligatures;
+      
     }
 
     .container {
@@ -469,6 +469,87 @@
   color: #f5b041;
 }
 
+
+/* === Adatkezelési tájékoztató stílus === */
+details {
+  position: var(--card);
+  bottom: 20px;
+  right: 20px;
+  width: 280px;
+  max-height: 80vh;
+  overflow: auto;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+  z-index: 999;
+  font-family: 'Poppins', sans-serif;
+}
+
+details[open] {
+  padding: 15px;
+}
+
+summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 12px 16px;
+  background: #2a5298;
+  color: white;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  user-select: none;
+  transition: background 0.3s;
+}
+
+summary:hover {
+  background: #1e3c72;
+}
+
+summary::marker {
+  display: none; /* eltávolítja az alap háromszöget */
+}
+
+summary::after {
+  content: "▼";
+  float: right;
+  font-size: 12px;
+  transition: transform 0.3s;
+}
+
+details[open] summary::after {
+  transform: rotate(180deg);
+}
+
+/* A belső panel formázása */
+.privacy-panel {
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.privacy-panel h4 {
+  margin-bottom: 10px;
+  color: #2a5298;
+}
+
+.privacy-panel ol {
+  padding-left: 20px;
+  margin-bottom: 10px;
+}
+
+.privacy-panel li {
+  margin-bottom: 8px;
+}
+
+.small {
+  font-size: 12px;
+  color: #555;
+  text-align: right;
+}
+
   </style>
 </head>
 <body>
@@ -648,46 +729,49 @@
   </footer>
 
   <!-- PRIVACY PANEL (mindig látható, jobb alsó sarok) -->
-  <aside class="privacy-panel" role="complementary" aria-label="Adatkezelési tájékoztató">
-    <h4>📆 Hatályos: 2025.07.15-től</h4>
-    <div style="font-weight:700;margin-bottom:6px">Adatkezelési tájékoztató</div>
-    <div style="margin-bottom:8px;font-size:13px">Érvényes: 2025. július 15-től visszavonásig</div>
-    <ol>
-      <li><strong>Adatkezelő adatai</strong><br>
-        Cégnév: Szaniszló Levente E. V<br>
-        Székhely: 3752 Szendrő, Ady Endre utca 14<br>
-        Adószám: 90255467-1-25<br>
-        E-mail: szaniszlevi@gmail.com<br>
-        Telefonszám: 06204976187<br>
-        Képviselő: Szaniszló Levente
-      </li>
-      <li><strong>Kezelt személyes adatok köre</strong><br>
-        Név, E-mail cím, Telefonszám, IP-cím, a megjegyzés mezőben megadott egyéb személyes adatok.
-      </li>
-      <li><strong>Az adatkezelés célja</strong><br>
-        Kapcsolatfelvétel visszaigazolása, árajánlat adása, időpont egyeztetés, kérdések megválaszolása.
-      </li>
-      <li><strong>Az adatkezelés jogalapja</strong><br>
-        Az érintett hozzájárulása (GDPR 6. cikk (1) a) pont), illetve szerződés előkészítése/ teljesítése (GDPR 6. cikk (1) b) pont).
-      </li>
-      <li><strong>Adattárolás időtartama</strong><br>
-        A személyes adatokat legfeljebb 12 hónapig őrizzük meg, kivéve, ha szerződéses kapcsolat alakul ki — ilyenkor a vonatkozó jogszabályok szerint (pl. számlázási adat: 8 év).
-      </li>
-      <li><strong>Hozzáférés az adatokhoz</strong><br>
-        A megadott adatokat kizárólag az adatkezelő vagy az általa kijelölt munkatársak kezelik; harmadik fél részére nem kerülnek továbbításra, kivéve jogszabály vagy az ügyfél kérése esetén.
-      </li>
-      <li><strong>Adatok továbbítása</strong><br>
-        Az űrlap kitöltésekor megadott adatokat e-mailben kapja meg az adatkezelő (pl. Google Űrlap rendszerén keresztül), és nem tároljuk nyilvános felületen.
-      </li>
-      <li><strong>Az érintett jogai</strong><br>
-        Tájékoztatás kérés, helyesbítés vagy törlés kérése, tiltakozás az adatkezelés ellen, hozzájárulás visszavonása. Kérelmét a megadott elérhetőségen jelezheti. Panasszal élhet a NAIH-nál (www.naih.hu).
-      </li>
-      <li><strong>Technikai biztonság</strong><br>
-        Az adatkezelő minden elvárható intézkedést megtesz az adatok védelme érdekében (digitális védelem, hozzáféréskorlátozás, jelszavas rendszerek).
-      </li>
-    </ol>
-    <div class="small">📄 Verziószám: 1.0</div>
-  </aside>
+  <details>
+    <summary> Adatkezelési tájékoztató</summary>
+    <aside class="privacy-panel" role="complementary" aria-label="Adatkezelési tájékoztató">
+      <h4>📆 Hatályos: 2025.07.15-től</h4>
+      <div style="font-weight:700;margin-bottom:6px">Adatkezelési tájékoztató</div>
+      <div style="margin-bottom:8px;font-size:13px">Érvényes: 2025. július 15-től visszavonásig</div>
+      <ol>
+        <li><strong>Adatkezelő adatai</strong><br>
+          Cégnév: Szaniszló Levente E. V<br>
+          Székhely: 3752 Szendrő, Ady Endre utca 14<br>
+          Adószám: 90255467-1-25<br>
+          E-mail: szaniszlevi@gmail.com<br>
+          Telefonszám: 06204976187<br>
+          Képviselő: Szaniszló Levente
+        </li>
+        <li><strong>Kezelt személyes adatok köre</strong><br>
+          Név, E-mail cím, Telefonszám, IP-cím, a megjegyzés mezőben megadott egyéb személyes adatok.
+        </li>
+        <li><strong>Az adatkezelés célja</strong><br>
+          Kapcsolatfelvétel visszaigazolása, árajánlat adása, időpont egyeztetés, kérdések megválaszolása.
+        </li>
+        <li><strong>Az adatkezelés jogalapja</strong><br>
+          Az érintett hozzájárulása (GDPR 6. cikk (1) a) pont), illetve szerződés előkészítése/ teljesítése (GDPR 6. cikk (1) b) pont).
+        </li>
+        <li><strong>Adattárolás időtartama</strong><br>
+          A személyes adatokat legfeljebb 12 hónapig őrizzük meg, kivéve, ha szerződéses kapcsolat alakul ki — ilyenkor a vonatkozó jogszabályok szerint (pl. számlázási adat: 8 év).
+        </li>
+        <li><strong>Hozzáférés az adatokhoz</strong><br>
+          A megadott adatokat kizárólag az adatkezelő vagy az általa kijelölt munkatársak kezelik; harmadik fél részére nem kerülnek továbbításra, kivéve jogszabály vagy az ügyfél kérése esetén.
+        </li>
+        <li><strong>Adatok továbbítása</strong><br>
+          Az űrlap kitöltésekor megadott adatokat e-mailben kapja meg az adatkezelő (pl. Google Űrlap rendszerén keresztül), és nem tároljuk nyilvános felületen.
+        </li>
+        <li><strong>Az érintett jogai</strong><br>
+          Tájékoztatás kérés, helyesbítés vagy törlés kérése, tiltakozás az adatkezelés ellen, hozzájárulás visszavonása. Kérelmét a megadott elérhetőségen jelezheti. Panasszal élhet a NAIH-nál (www.naih.hu).
+        </li>
+        <li><strong>Technikai biztonság</strong><br>
+          Az adatkezelő minden elvárható intézkedést megtesz az adatok védelme érdekében (digitális védelem, hozzáféréskorlátozás, jelszavas rendszerek).
+        </li>
+      </ol>
+      <div class="small">📄 Verziószám: 1.0</div>
+    </aside>
+  </details>
 
   <script>
     /***************************************************
